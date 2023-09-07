@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{0E296E7E-5830-4F71-9218-1E016A297F9F}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.NoteItEasyApp PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="Models/NoteModel.cs" />
+      <File FileName="appsettings.json" />
+      <File FileName="Program.cs" />
+      <File FileName="Views/Home/Index.cshtml" />
+      <File FileName="Controllers/HomeController.cs" />
+      <File FileName="Data/DataContext.cs" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="20" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
