@@ -10,8 +10,8 @@ using NoteItEasyApp.Data;
 namespace NoteItEasyApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230830050528_Initial")]
-    partial class Initial
+    [Migration("20230910070252_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,10 +46,6 @@ namespace NoteItEasyApp.Migrations
             modelBuilder.Entity("NoteItEasyApp.Models.UserModel", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

@@ -10,8 +10,6 @@ namespace NoteItEasyApp.Models
 
         public string Name { get; set; }           // User's name
 
-        public string Email { get; set; }          // User's email
-
         public string ProfileImage { get; set; }   // URL to user's profile image
     }
 }

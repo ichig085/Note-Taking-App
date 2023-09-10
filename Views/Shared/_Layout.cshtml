@@ -1,36 +1,65 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title of the page dynamically set based on ViewData -->
     <title>@ViewData["Title"] - NoteItEasyApp</title>
+    <!-- Link to Bootstrap CSS library -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Link to custom CSS styles -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Link to additional CSS styles specific to NoteItEasyApp -->
     <link rel="stylesheet" href="~/NoteItEasyApp.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- Header section with navigation bar -->
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NoteItEasyApp</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <!-- Brand name linked to the home page -->
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NoteItEasyApp</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Display different options based on user authentication status -->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <!-- If authenticated, display user's name and logout option -->
+                            <li><a class="text-decoration-none text-dark" asp-controller="Account" asp-action="Profile">Hello @User.Identity.Name!</a></li>
+                            <li><a class="text-decoration-none text-dark m-3" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <!-- If not authenticated, display login/connect option -->
+                            <li><a class="text-dark" asp-controller="Account" asp-action="Login">Connect</a></li>
+                        }
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
+    
+    <!-- Main content container -->
     <div class="container">
         <main role="main" class="pb-3">
+            <!-- Render the main content body -->
             @RenderBody()
         </main>
     </div>
 
+    <!-- Footer section -->
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - NoteItEasyApp
         </div>
     </footer>
+
+    <!-- JavaScript libraries and scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Render additional scripts if specified in sections -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
