@@ -39,15 +39,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/", async (HttpContext context) =>
+app.UseEndpoints(endpoints =>
 {
-    // Redirect to the "Profile" action after authentication
-    context.Response.Redirect("/Account/Profile");
+    endpoints.MapDefaultControllerRoute();
 });
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();
-
