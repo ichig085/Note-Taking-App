@@ -20,8 +20,11 @@ namespace NoteItEasyApp.Controllers
         }
 
         // Action method for initiating the login process
-        public async Task Login(string returnUrl = "/")
+        public async Task Login()
         {
+            // Set the returnUrl to the URL of your dashboard action method
+            var returnUrl = Url.Action("Dashboard", "Account");
+
             // Build authentication properties for the login process
             var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
                 .WithRedirectUri(returnUrl)
@@ -30,6 +33,21 @@ namespace NoteItEasyApp.Controllers
             // Challenge the user to authenticate using Auth0
             await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
         }
+
+        [Authorize]
+        public async Task<IActionResult> Dashboard()
+        {
+            // Get user ID from Auth0 claims
+            var auth0UserId = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?.Value;
+
+            // Query the database to get all notes associated with the user
+            var userNotes = await _dbContext.NoteModels
+                .Where(n => n.UserModelId == auth0UserId)
+                .ToListAsync();
+
+            return View(userNotes);
+        }
+
 
         // Action method for logging out the user
         [Authorize]
